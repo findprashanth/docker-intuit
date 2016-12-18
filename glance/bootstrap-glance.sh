@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SQL_SCRIPT=/root/glance.sql
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -h $MYSQL_HOST <$SQL_SCRIPT
+mysql -uroot -padmin123 -h mysql <$SQL_SCRIPT
 
 su -s /bin/sh -c "glance-manage db_sync" glance
 

@@ -2,7 +2,6 @@
 
 set -x
 SQL_SCRIPT=${SQL_SCRIPT:-/root/keystone.sql}
-mysql -uroot -p$MYSQL_ROOT_PASSWORD -h mysql <$SQL_SCRIPT
+mysql -uroot -padmin123 -h mysql <$SQL_SCRIPT
 keystone-manage db_sync
-uwsgi --http 0.0.0.0:5000 --wsgi-file $(which keystone-wsgi-public) &
-uwsgi --http 0.0.0.0:35357 --wsgi-file $(which keystone-wsgi-admin)
+/usr/bin/keystone-all --config-file=/etc/keystone/keystone.conf --log-file=/var/log/keystone/keystone.log &
