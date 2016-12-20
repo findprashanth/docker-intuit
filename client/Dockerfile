@@ -9,12 +9,11 @@ RUN set -x \
     && apt-get install -y apache2 libffi-dev python-dev libssl-dev  python-openstackclient\
     && apt-get -y clean
 
-ENV APACHE_RUN_USER www-data
-ENV APACHE_RUN_GROUP www-data
-ENV APACHE_LOG_DIR /var/log/apache2
 
 COPY openrc_admin /root/openrc_admin1
 COPY openrc_admin1 /root/openrc_admin
+
+source /etc/apache2/envars
 
 EXPOSE 80
 
