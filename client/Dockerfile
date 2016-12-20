@@ -7,7 +7,8 @@ ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
 
-COPY openrc_admin /root/openrc_admin
+COPY openrc_admin /root/openrc_admin1
+COPY openrc_admin1 /root/openrc_admin
 
 EXPOSE 80
 
