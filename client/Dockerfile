@@ -12,9 +12,11 @@ RUN set -x \
 
 COPY openrc_admin /root/openrc_admin1
 COPY openrc_admin1 /root/openrc_admin
-
-source /etc/apache2/envars
+COPY bootstrap.sh /etc/bootstrap.sh
 
 EXPOSE 80
 
-CMD ["/usr/sbin/apache2", "-D", "FOREGROUND"]
+RUN chown root.root /etc/bootstrap.sh && chmod a+x /etc/bootstrap.sh
+ENTRYPOINT ["/etc/bootstrap.sh"]
+
+
